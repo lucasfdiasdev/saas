@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    domains: ["files.stripe.com", "subdomain", "utfs.io"],
+  },
+  reactStrictMode: false,
+};
 
 export default nextConfig;
