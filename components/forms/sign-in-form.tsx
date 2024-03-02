@@ -1,9 +1,11 @@
 "use client";
 
 import * as z from "zod";
+import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import { login } from "@/actions/login";
 import { LoginSchema } from "@/schemas";
 import CardWrapper from "@/components/card-wrapper";
 import {
@@ -20,6 +22,10 @@ import ErrorForm from "@/components/forms/error-form";
 import SuccessForm from "@/components/forms/success-form";
 
 const SignInForm = () => {
+  const [error, setError] = useState<string | undefined>("");
+  const [success, setSuccess] = useState<string | undefined>("");
+  const [isPending, startTransition] = useTransition();
+
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
@@ -29,7 +35,15 @@ const SignInForm = () => {
   });
 
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-    console.log(values);
+    setError("");
+    setSuccess("");
+
+    startTransition(() => {
+      login(values).then((data) => {
+        setError(data.error);
+        setSuccess(data.success);
+      });
+    });
   };
 
   return (
@@ -51,6 +65,7 @@ const SignInForm = () => {
                   <FormControl>
                     <Input
                       {...field}
+                      disabled={isPending}
                       placeholder="email@exemplo.com"
                       type="email"
                     />
@@ -66,16 +81,21 @@ const SignInForm = () => {
                 <FormItem>
                   <FormLabel>Senha</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder="******" type="password" />
+                    <Input
+                      {...field}
+                      placeholder="******"
+                      disabled={isPending}
+                      type="password"
+                    />
                   </FormControl>
                   <FormMessage className="text-xs" />
                 </FormItem>
               )}
             />
           </div>
-          <ErrorForm message="Credenciais inválidas!" />
-          <SuccessForm message="Email enviado!" />
-          <Button type="submit" className="w-full">
+          <ErrorForm message={error} />
+          <SuccessForm message={success} />
+          <Button type="submit" disabled={isPending} className="w-full">
             Login
           </Button>
         </form>
