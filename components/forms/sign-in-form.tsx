@@ -48,6 +48,7 @@ const SignInForm = () => {
 
   return (
     <CardWrapper
+      title="Login"
       headerLabel="Welcome back"
       backButtonLabel="Don't have an account?"
       backButtoHref="/agency/sign-up"
@@ -83,7 +84,7 @@ const SignInForm = () => {
                   <FormControl>
                     <Input
                       {...field}
-                      placeholder="******"
+                      placeholder="********"
                       disabled={isPending}
                       type="password"
                     />

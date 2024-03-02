@@ -12,6 +12,7 @@ import ButtonBackForm from "./forms/button-back-form";
 interface CardWrapperProps {
   children: React.ReactNode;
   headerLabel?: string;
+  title?: string;
   backButtonLabel: string;
   backButtoHref: string;
   showSocial?: boolean;
@@ -19,6 +20,7 @@ interface CardWrapperProps {
 
 const CardWrapper: React.FC<CardWrapperProps> = ({
   children,
+  title,
   headerLabel,
   backButtonLabel,
   backButtoHref,
@@ -27,7 +29,7 @@ const CardWrapper: React.FC<CardWrapperProps> = ({
   return (
     <Card className="w-[400px] shadow-md">
       <CardHeader className="flex items-center justify-center space-y-6">
-        <CardTitle className="text-3xl font-semibold">Sign In</CardTitle>
+        <CardTitle className="text-3xl font-semibold">{title}</CardTitle>
         <CardDescription className="text-muted-foreground text-sm">
           {headerLabel}
         </CardDescription>
