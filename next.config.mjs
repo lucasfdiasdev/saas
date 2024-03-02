@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["files.stripe.com", "subdomain", "utfs.io"],
+    domains: ["uploadthing.com", "files.stripe.com", "subdomain", "utfs.io"],
   },
   reactStrictMode: false,
 };
