@@ -26,15 +26,23 @@ export const {
     },
   },
   callbacks: {
-    // async signIn({ user }) {
-    //   const userId = user.id as string;
-    //   const existingUser = await getUserById(userId);
+    async signIn({ user, account }) {
+      // Allow OAuth without email verification
+      if (account?.provider !== "credentials") {
+        return true;
+      }
 
-    //   if (!existingUser || !existingUser.emailVerified) {
-    //     return false;
-    //   }
-    //   return true;
-    // },
+      // Prevent sign in without email verification
+      if (user && user.id) {
+        const existingUser = await getUserById(user.id);
+
+        if (!existingUser?.emailVerified) {
+          return false;
+        }
+      }
+
+      return true;
+    },
     async session({ token, session }) {
       if (token.sub && session.user) {
         session.user.id = token.sub;
