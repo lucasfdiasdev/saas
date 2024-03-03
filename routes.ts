@@ -13,10 +13,12 @@ export const publicRoutes = ["/site"];
  * @type { string[] }
  */
 export const authRoutes = [
+  "/agency/error",
   "/agency/sign-in",
   "/agency/sign-up",
-  "/agency/error",
   "/agency/new-verification",
+  "/agency/forgot-password",
+  "/agency/new-password",
 ];
 
 /**
