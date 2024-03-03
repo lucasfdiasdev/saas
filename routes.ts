@@ -16,6 +16,7 @@ export const authRoutes = [
   "/agency/sign-in",
   "/agency/sign-up",
   "/agency/error",
+  "/agency/new-verification",
 ];
 
 /**
