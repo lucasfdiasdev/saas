@@ -12,7 +12,11 @@ export const publicRoutes = ["/site"];
  *
  * @type { string[] }
  */
-export const authRoutes = ["/agency/sign-in", "/agency/sign-up"];
+export const authRoutes = [
+  "/agency/sign-in",
+  "/agency/sign-up",
+  "/agency/error",
+];
 
 /**
  * O prefixo para rotas de autenticação de API
