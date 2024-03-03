@@ -1,26 +1,30 @@
 /**
- * An array of  routes that are accessible to the public
- * These routes do not require authentication
+ * Uma variedade de rotas acessíveis ao público
+ * Essas rotas não requerem autenticação
+ *
  * @type { string[] }
  */
 export const publicRoutes = ["/site"];
 
 /**
- * An array of  routes that are used for authentication
- * These routes will redirect logged in users
+ * Uma matriz de rotas usadas para autenticação
+ * Essas rotas redirecionarão usuários logados
+ *
  * @type { string[] }
  */
 export const authRoutes = ["/agency/sign-in", "/agency/sign-up"];
 
 /**
- * The prefix for api authentication routes
- * Routes that start with this prefix are used for api authentication purposes
+ * O prefixo para rotas de autenticação de API
+ * Rotas que começam com este prefixo são usadas para fins de autenticação de API
+ *
  * @type { string[] }
  */
 export const apiAuthPrefix = "/api/auth";
 
 /**
- * The default redirect path after logging in
+ * O caminho de redirecionamento padrão após o login
+ *
  * @type { string[] }
  */
-export const DEFAULT_LOGIN_REDIRECT = "/settings";
+export const DEFAULT_LOGIN_REDIRECT = "/agency";
