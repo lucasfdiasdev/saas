@@ -1,6 +1,7 @@
 "use client";
 
 import * as z from "zod";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useState, useTransition } from "react";
 import { useSearchParams } from "next/navigation";
@@ -96,6 +97,14 @@ const SignInForm = () => {
                       type="password"
                     />
                   </FormControl>
+                  <Button
+                    size="sm"
+                    variant="link"
+                    asChild
+                    className="px-0 font-normal"
+                  >
+                    <Link href="/agency/forgot-password">Forgot password?</Link>
+                  </Button>
                   <FormMessage className="text-xs" />
                 </FormItem>
               )}
