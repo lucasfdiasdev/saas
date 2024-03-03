@@ -7,7 +7,7 @@ import ButtonToggle from "@/components/button-toggle";
 const Header = () => {
   return (
     <>
-      <header className="p-4 flex items-center justify-between relative">
+      <header className="fixed top-0 left-0 right-0 p-4 flex items-center justify-between z-10">
         <aside className="flex items-center gap-2">
           <AiOutlineSplitCells size={40} />
           <span className="text-xl font-bold">Saas.</span>
