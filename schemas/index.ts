@@ -15,6 +15,20 @@ export const LoginSchema = z.object({
   ),
 });
 
+export const NewPasswordSchema = z.object({
+  password: z.string().refine(
+    (value) => {
+      const passwordRegex =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&-+=()!? "]).{8,128}$/;
+      return passwordRegex.test(value);
+    },
+    {
+      message:
+        "Sua senha deve ter 8 caracteres, 1 letra maiúscula, 1 letra minúscula e 1 caractere especial.",
+    }
+  ),
+});
+
 export const ResetSchema = z.object({
   email: z.string().email({ message: "Email inválido" }),
 });
