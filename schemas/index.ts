@@ -13,6 +13,7 @@ export const LoginSchema = z.object({
         "Sua senha deve ter 8 caracteres, 1 letra maiúscula, 1 letra minúscula e 1 caractere especial.",
     }
   ),
+  code: z.optional(z.string()),
 });
 
 export const NewPasswordSchema = z.object({
